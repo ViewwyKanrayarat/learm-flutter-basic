@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/game_page.dart';
+import 'pages/menu_page.dart';
 
 // จุดเริ่มต้นของแอป
 void main() {
@@ -15,12 +15,14 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.light(),
       home: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.lightBlue.shade100,
           title: Align(
             alignment: Alignment.centerLeft,
-            child: Text('Birdle Game'),
+            child: Text('Greek Me Soft กรีกโยเกิร์ต'),
           ),
         ),
         // body: Center(
@@ -33,11 +35,9 @@ class MainApp extends StatelessWidget {
         //     ],
         //   ), // เอา widget Tile ไปวางกลางหน้าจอ
         // ),
-        body: Center(child: GamePage()),
+        body: const MenuPage(),
       ),
     );
   }
 }
-
-
 
