@@ -54,7 +54,7 @@ class MenuPage extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),  // เพิ่มพื้นที่ขอบด้านใน 16 พิกเซลทั้ง 4 ด้าน
           child: Align(
             alignment: Alignment.centerRight,
             child: ValueListenableBuilder<List<MenuItem>>(

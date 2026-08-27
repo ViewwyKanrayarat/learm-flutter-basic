@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'pages/menu_page.dart';
+import 'pages/tab_menu_page.dart';
 
-// จุดเริ่มต้นของแอป
 void main() {
   runApp(const MainApp());
 }
 
-// TODO เวลาสร้างคลาสจะใช้ StatelessWidget หรือ StatefulWidget ขึ้นอยู่กับว่าคลาสนั้นต้องการเก็บสถานะหรือไม่
-
-// mainApp คือ layout
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
