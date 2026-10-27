@@ -105,7 +105,7 @@ class ShopPage extends StatelessWidget {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(
                                 20.0,
-                              ), // กำหนดความโค้งมนที่นี่ (ปรับตัวเลขได้)sssssssssss
+                              ), // กำหนดความโค้งมนที่นี่ (ปรับตัวเลขได้)
                               child: Image.asset(
                                 x.imagePath,
                                 height: 150,
