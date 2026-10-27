@@ -1,20 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
-
-// ประกาศคลาส MenuItem เพื่อเก็บข้อมูลของเมนู เช่น ชื่อ ราคา รูปภาพ และคำอธิบาย
-class MenuItem {
-  const MenuItem({
-    required this.name,
-    required this.price,
-    required this.imagePath,
-    required this.description,
-  });
-
-  final String name;
-  final String price;
-  final String imagePath;
-  final String description;
-}
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
@@ -51,19 +35,16 @@ class MenuPage extends StatelessWidget {
     ),
   ];
 
+  
   static final ValueNotifier<List<MenuItem>> _cartItems = ValueNotifier([]);
 
   // เก็บรายการเมนูในตะกร้า
   static void _addToCart(BuildContext context, MenuItem item) {
-    developer.log('เก็บใส่ตระกร้า: ${item}');
     _cartItems.value = [..._cartItems.value, item];
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(
-          '${item.name} added to cart (${_cartItems.value.length})',
-        ),
-        backgroundColor: Colors.red,
+        content: Text('${item.name} added to cart (${_cartItems.value.length})'),
       ),
     );
   }
@@ -73,27 +54,17 @@ class MenuPage extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(
-            16,
-            16,
-            16,
-            0,
-          ), // เพิ่มพื้นที่ขอบด้านใน 16 พิกเซลทั้ง 4 ด้าน
-          child: Container(
-            color: Colors.yellow,
-            padding: const EdgeInsets.all(12),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: ValueListenableBuilder<List<MenuItem>>(
-                valueListenable: _cartItems,
-                builder: (context, cartItems, child) {
-                  return Text('Cart: ${cartItems.length}');
-                },
-              ),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),  // เพิ่มพื้นที่ขอบด้านใน 16 พิกเซลทั้ง 4 ด้าน
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: ValueListenableBuilder<List<MenuItem>>(
+              valueListenable: _cartItems,
+              builder: (context, cartItems, child) {
+                return Text('Cart: ${cartItems.length}');
+              },
             ),
           ),
         ),
-        // ควบคุมพื้นที่สไลด์โชว์การ์ด
         Expanded(
           child: ListView.separated(
             padding: const EdgeInsets.all(16),
@@ -102,16 +73,10 @@ class MenuPage extends StatelessWidget {
             itemBuilder: (context, index) {
               final item = _items[index];
 
-              developer.log('สินค้า: ${item.name}', name: 'shop.itemBuilder');
-
               return Card(
                 child: InkWell(
                   borderRadius: BorderRadius.circular(4),
                   onTap: () {
-                    developer.log(
-                      'เปิดรายละเอียด: ${item.name}, ราคา: ${item.price}',
-                      name: 'menu.detail',
-                    );
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -171,17 +136,14 @@ class MenuDetailPage extends StatelessWidget {
 
 // ปุ่มเพิ่มสินค้าในตะกร้า
 class ButtonAddCart extends StatelessWidget {
-  const ButtonAddCart({
-    super.key,
-    required this.onPressed,
-  }); // บอกว่าคลาสนี้จะรับ parameter onPressed ซึ่งเป็นฟังก์ชันที่ไม่มีค่า return (VoidCallback)
+  const ButtonAddCart({super.key, required this.onPressed}); // บอกว่าคลาสนี้จะรับ parameter onPressed ซึ่งเป็นฟังก์ชันที่ไม่มีค่า return (VoidCallback)
   final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Ink(
       decoration: const ShapeDecoration(
-        color: Colors.green,
+        color: Colors.lightBlue,
         shape: CircleBorder(),
       ),
       child: IconButton(
@@ -221,4 +183,19 @@ class _SampleCard extends StatelessWidget {
       ),
     );
   }
+}
+
+// ประกาศคลาส MenuItem เพื่อเก็บข้อมูลของเมนู เช่น ชื่อ ราคา รูปภาพ และคำอธิบาย
+class MenuItem {
+  const MenuItem({
+    required this.name,
+    required this.price,
+    required this.imagePath,
+    required this.description,
+  });
+
+  final String name;
+  final String price;
+  final String imagePath;
+  final String description;
 }
